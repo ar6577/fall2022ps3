@@ -9,15 +9,18 @@ def problem1(data: bytes) -> bytes:
     >>> problem1(b'hello').hex()
     'aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d'
     """
-    encoded_str = data.encode()
+    #encoded_str = data.encode()
 
     # create a sha1 hash object initialized with the encoded string
-    hash_obj = hashlib.sha1(encoded_str)
+    hash_obj = hashlib.sha1(data).hexdigest()
+    #print(hash_obj)
 
     # convert the hash object to a hexadecimal value
-    hexa_value = hash_obj.hexdigest()
-    print(hexa_value)
-    return hexa_value
+    #hexa_value = hash_obj.hexdigest()
+
+    bytevalue = bytes.fromhex(hash_obj)
+    #print(bytevalue)
+    return bytevalue
 
 
 
@@ -217,4 +220,4 @@ def problem5(key: bytes, data: bytes) -> bytes:
     '1b2c16b75bd2a870c114153ccda5bcfca63314bc722fa160d690de133ccbb9db'
     """
 
-problem1((b'hello').hex())
+problem1(b'hello').hex()
