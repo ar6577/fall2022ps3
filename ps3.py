@@ -16,6 +16,7 @@ def problem1(data: bytes) -> bytes:
 
     # convert the hash object to a hexadecimal value
     hexa_value = hash_obj.hexdigest()
+    print(hexa_value)
     return hexa_value
 
 
@@ -216,4 +217,4 @@ def problem5(key: bytes, data: bytes) -> bytes:
     '1b2c16b75bd2a870c114153ccda5bcfca63314bc722fa160d690de133ccbb9db'
     """
 
-print(problem1(b'hello').hex())
+problem1((b'hello').hex())
