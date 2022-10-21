@@ -31,6 +31,16 @@ def problem2(data: bytes) -> bytes:
     >>> problem2(b'hello').hex()
     '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824'
     """
+    hash_obj = hashlib.sha256(data).hexdigest()
+    # print(hash_obj)
+
+    # convert the hash object to a hexadecimal value
+    # hexa_value = hash_obj.hexdigest()
+
+    bytevalue = bytes.fromhex(hash_obj)
+    # print(bytevalue)
+    return bytevalue
+
 
 
 class SHAttered(typing.TypedDict):
@@ -220,4 +230,5 @@ def problem5(key: bytes, data: bytes) -> bytes:
     '1b2c16b75bd2a870c114153ccda5bcfca63314bc722fa160d690de133ccbb9db'
     """
 
-problem1(b'hello').hex()
+print(problem1(b'hello').hex())
+print(problem2(b'hello').hex())
