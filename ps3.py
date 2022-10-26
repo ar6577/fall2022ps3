@@ -1,6 +1,7 @@
 import typing
-import requests
 import hashlib
+import requests
+
 
 
 def problem1(data: bytes) -> bytes:
