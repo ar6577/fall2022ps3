@@ -80,8 +80,8 @@ def problem3() -> SHAttered:
     """
     pdf1_sha1_bytes = b'8v,\xf7\xf5Y4\xb3M\x17\x9a\xe6\xa4\xc8\x0c\xad\xcc\xbb\x7f\n'
     pdf2_sha1_bytes = pdf1_sha1_bytes
-    pdf1_sha256_bytes = b'8v,\xf7\xf5Y4\xb3M\x17\x9a\xe6\xa4\xc8\x0c\xad\xcc\xbb\x8f\n'
-    pdf2_sha256_bytes = pdf1_sha1_bytes
+    pdf1_sha256_bytes = b'+\xb7\x87\xa7>75/\x928:\xbe~)\x02\x93m\x10Y\xad\x9f\x1b\xa6\xda\xaa\x9c\x1eX\xeeip\xd0'
+    pdf2_sha256_bytes = b'\xd4H\x87u\xd2\x9b\xde\xf7\x993g\xd5A\x06M\xbd\xdaP\xd3\x83\xf8\x9f\n\xa1:o\xf2\xe0\x89K\xa5\xff'
     return SHAttered({'blue_pdf_sha1': pdf1_sha1_bytes, 'red_pdf_sha1': pdf2_sha1_bytes,'blue_pdf_sha256': pdf1_sha256_bytes, 'red_pdf_sha256': pdf2_sha256_bytes})
 
 
