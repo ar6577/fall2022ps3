@@ -1,5 +1,5 @@
 import typing
-import requests
+#import requests
 import hashlib
 
 
@@ -245,4 +245,4 @@ def problem5(key: bytes, data: bytes) -> bytes:
 
 print(problem1(b'hello').hex())
 print(problem2(b'hello').hex())
-print(problem3())
+#print(problem3())
