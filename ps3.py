@@ -44,7 +44,7 @@ def problem2(data: bytes) -> bytes:
     return bytevalue
 
 
-import requests
+#import requests
 class SHAttered(typing.TypedDict):
     """
     Hashes of proof PDFs from https://SHAttered.io/
