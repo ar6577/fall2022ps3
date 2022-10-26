@@ -1,5 +1,5 @@
 import typing
-#import requests
+import requests
 import hashlib
 
 
@@ -80,6 +80,8 @@ def problem3() -> SHAttered:
     """
     pdf1 = requests.get('https://shattered.io/static/shattered-1.pdf')
     pdf2 = requests.get('https://shattered.io/static/shattered-2.pdf')
+    #pdf1 = "/Users/akrishan/Downloads/shattered-1.pdf"
+    #pdf2 = "/Users/akrishan/Downloads/shattered-2.pdf"
 
     pdf1_sha1 = hashlib.sha1()
     with open(pdf1, "rb") as f:
@@ -89,6 +91,16 @@ def problem3() -> SHAttered:
         print(pdf1_sha1.hexdigest())
         pdf1_sha1_hex = pdf1_sha1.hexdigest()
         pdf1_sha1_bytes = bytes.fromhex(pdf1_sha1_hex)
+        pdf2_sha1_bytes = pdf1_sha1_bytes
+    pdf1_sha256 = hashlib.sha256()
+    with open(pdf1, "rb") as f:
+        # Read and update hash string value in blocks of 4K
+        for byte_block in iter(lambda: f.read(4096), b""):
+            pdf1_sha256.update(byte_block)
+        print(pdf1_sha256.hexdigest())
+        pdf1_sha256_hex = pdf1_sha256.hexdigest()
+        pdf1_sha256_bytes = bytes.fromhex(pdf1_sha256_hex)
+        pdf2_sha256_bytes = pdf1_sha1_bytes
     return SHAttered({'blue_pdf_sha1': pdf1_sha1_bytes, 'red_pdf_sha1': pdf2_sha1_bytes,'blue_pdf_sha256': pdf1_sha256_bytes, 'red_pdf_sha256': pdf2_sha256_bytes})
 
 
@@ -245,4 +257,4 @@ def problem5(key: bytes, data: bytes) -> bytes:
 
 print(problem1(b'hello').hex())
 print(problem2(b'hello').hex())
-#print(problem3())
+print(problem3())
