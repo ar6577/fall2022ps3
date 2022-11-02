@@ -87,13 +87,14 @@ def problem3() -> SHAttered:
     return SHAttered({'blue_pdf_sha1': pdf1_sha1_bytes, 'red_pdf_sha1': pdf2_sha1_bytes,'blue_pdf_sha256': pdf1_sha256_bytes, 'red_pdf_sha256': pdf2_sha256_bytes})
 
 
-def sha256_tot_bytes(length: int) -> bytes:
+def sha256_tot_bytes(length: int) -> int:
     addablock = length % 64
     if addablock > 0:
         tot_bytes = ((length//64) + 1)*64
     else:
         tot_bytes = length
 
+    print('inside tot bytes function', tot_bytes)
     return tot_bytes
 
 def sha256_padding(length: int) -> bytes:
@@ -237,6 +238,9 @@ def problem4(length: int, hash: bytes, suffix: bytes) -> bytes:
     >>> reference_hash == extended_hash
     True
     """
+    print('length', length)
+    print('hash', hash)
+
     h = sha256.sha256()
     tot_bytes = sha256_tot_bytes(length)
     h.state = (hash,tot_bytes)
