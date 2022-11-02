@@ -260,5 +260,6 @@ def problem5(key: bytes, data: bytes) -> bytes:
 print(problem1(b'hello').hex())
 print(problem2(b'hello').hex())
 print(problem3())
-print(problem4(8))
+original_data = b'hello'
+print(problem4(len(original_data), problem2(original_data), b'world'))
 print(problem5(b'secret', b'data').hex())
