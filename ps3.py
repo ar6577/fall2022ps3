@@ -87,6 +87,15 @@ def problem3() -> SHAttered:
     return SHAttered({'blue_pdf_sha1': pdf1_sha1_bytes, 'red_pdf_sha1': pdf2_sha1_bytes,'blue_pdf_sha256': pdf1_sha256_bytes, 'red_pdf_sha256': pdf2_sha256_bytes})
 
 
+#def sha256_tot_bytes(length: int) -> bytes:
+    addablock = length % 64
+    if addablock > 0:
+        tot_bytes = ((length//64) + 1)*64
+    else:
+        tot_bytes = length
+
+    return tot_bytes
+
 def sha256_padding(length: int) -> bytes:
     """
     Get the padding for SHA256
@@ -228,6 +237,11 @@ def problem4(length: int, hash: bytes, suffix: bytes) -> bytes:
     >>> reference_hash == extended_hash
     True
     """
+    h = sha256.sha256()
+    tot_bytes = sha256_tot_bytes(length)
+    h.state = (hash,tot_bytes)
+
+    return extended_hash
 
 
 def problem5(key: bytes, data: bytes) -> bytes:
@@ -237,12 +251,6 @@ def problem5(key: bytes, data: bytes) -> bytes:
     >>> problem5(b'secret', b'data').hex()
     '1b2c16b75bd2a870c114153ccda5bcfca63314bc722fa160d690de133ccbb9db'
     """
-
-    # encoding as per other answers
-    #byte_key = bytes(key, 'UTF-8')  # key.encode() would also work in this case
-    #message = my.encode()
-
-    # now use the hmac.new function and the hexdigest method
     hash_obj = hmac.new(key, data, hashlib.sha256).hexdigest()
     bytevalue = bytes.fromhex(hash_obj)
     return bytevalue
@@ -250,4 +258,5 @@ def problem5(key: bytes, data: bytes) -> bytes:
 print(problem1(b'hello').hex())
 print(problem2(b'hello').hex())
 print(problem3())
+print(problem4(8))
 print(problem5(b'secret', b'data').hex())
