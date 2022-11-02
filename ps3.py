@@ -245,7 +245,7 @@ def problem4(length: int, hash: bytes, suffix: bytes) -> bytes:
     tot_bytes = sha256_tot_bytes(length)
     h.state = (hash,tot_bytes)
     h.update(suffix)
-    extended_hash = h.digest
+    extended_hash = h.digest()
 
     return extended_hash
 
