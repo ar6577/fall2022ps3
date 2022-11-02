@@ -1,6 +1,8 @@
 import typing
 #import requests
 import hashlib
+#import sha256
+import hmac
 
 
 def problem1(data: bytes) -> bytes:
@@ -236,6 +238,16 @@ def problem5(key: bytes, data: bytes) -> bytes:
     '1b2c16b75bd2a870c114153ccda5bcfca63314bc722fa160d690de133ccbb9db'
     """
 
+    # encoding as per other answers
+    #byte_key = bytes(key, 'UTF-8')  # key.encode() would also work in this case
+    #message = my.encode()
+
+    # now use the hmac.new function and the hexdigest method
+    hash_obj = hmac.new(key, data, hashlib.sha256).hexdigest()
+    bytevalue = bytes.fromhex(hash_obj)
+    return bytevalue
+
 print(problem1(b'hello').hex())
 print(problem2(b'hello').hex())
 print(problem3())
+print(problem5(b'secret', b'data').hex())
