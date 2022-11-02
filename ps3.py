@@ -1,7 +1,7 @@
 import typing
 #import requests
 import hashlib
-#import sha256
+import sha256
 import hmac
 
 
@@ -87,7 +87,7 @@ def problem3() -> SHAttered:
     return SHAttered({'blue_pdf_sha1': pdf1_sha1_bytes, 'red_pdf_sha1': pdf2_sha1_bytes,'blue_pdf_sha256': pdf1_sha256_bytes, 'red_pdf_sha256': pdf2_sha256_bytes})
 
 
-#def sha256_tot_bytes(length: int) -> bytes:
+def sha256_tot_bytes(length: int) -> bytes:
     addablock = length % 64
     if addablock > 0:
         tot_bytes = ((length//64) + 1)*64
